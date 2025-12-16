@@ -1,0 +1,21 @@
+{
+  "name": "For You",
+  "short_name": "For You",
+  "description": "A small space made with love.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f3dbe0",
+  "theme_color": "#f3dbe0",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

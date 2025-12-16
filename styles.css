@@ -1,0 +1,1144 @@
+:root{
+  --frame: #b8d3ea;
+  --frame2:#9fc3df;
+  --screen:#f8dfe1;
+
+  --bubbleA:#9fc3df;
+  --bubbleB:#caa695;
+
+  --ink:#2f4c66;
+  --inkSoft: rgba(47,76,102,.72);
+
+  /* SOLID surfaces (bukan glass transparan) */
+  --surface: #f6e6ea;     /* pink very soft */
+  --surface2:#f1d7dd;     /* pink slightly deeper */
+  --surfaceBlue:#b7d5ec;  /* pastel blue surface */
+  --surfaceLine:#e7c7cf;  /* border line */
+
+  --white:#fff;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:#eef4fb;
+  color:var(--ink);
+}
+
+.app{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding:18px;
+}
+
+.phone{
+  width:min(430px, 96vw);
+  aspect-ratio: 9 / 20; /* Android tall ratio (mirip Vivo V25 20:9) */
+  background: linear-gradient(180deg, var(--frame), var(--frame2));
+  border-radius: 28px;
+  padding:14px;
+  position:relative;
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  border: 4px solid rgba(255,255,255,.35);
+}
+
+.phone-top{
+  height:56px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+
+.pill{
+  width:62%;
+  height:14px;
+  background: rgba(255,255,255,.6);
+  border-radius:999px;
+}
+
+.mini-icons{
+  position:absolute;
+  right:10px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  opacity:.9;
+}
+.dot{
+  width:8px;height:8px;border-radius:50%;
+  background: rgba(255,255,255,.92);
+}
+.heart{ font-size:14px; color:rgba(255,255,255,.92); }
+
+.screen{
+  height: calc(100% - 56px - 44px);
+  background: var(--screen);
+  border-radius: 22px;
+  overflow:hidden;
+  display:none;
+  position:relative;
+  border: 3px solid rgba(255,255,255,.35);
+}
+.screen.active{ display:block; }
+
+.phone-bottom{
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.home-indicator{
+  width:38%;
+  height:8px;
+  background: rgba(255,255,255,.65);
+  border-radius:999px;
+}
+
+/* =========================
+   HOME wallpaper (ganti awan)
+   Cutesy tapi “boy-friendly”: stars / dots / planet vibe
+========================= */
+.wallpaper{
+  position:absolute; inset:0;
+  pointer-events:none;
+  opacity:1;
+
+  /* base soft gradient */
+  background:
+    radial-gradient(120px 90px at 18% 20%, rgba(255,255,255,.35), transparent 65%),
+    radial-gradient(160px 120px at 78% 25%, rgba(255,255,255,.25), transparent 65%),
+    radial-gradient(220px 160px at 50% 72%, rgba(255,255,255,.22), transparent 70%),
+    linear-gradient(180deg, #fbe9ec 0%, #f8dfe1 40%, #f7dadd 100%);
+}
+
+/* matiin elemen cloud lama kalau masih ada di HTML */
+.cloud{ display:none !important; }
+
+/* bintang/dot pattern */
+#home::before{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  opacity:.55;
+  background:
+    radial-gradient(circle at 12% 30%, rgba(47,76,102,.20) 0 2px, transparent 3px),
+    radial-gradient(circle at 26% 18%, rgba(47,76,102,.15) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 78% 16%, rgba(47,76,102,.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 34%, rgba(47,76,102,.14) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 18% 62%, rgba(47,76,102,.14) 0 1.5px, transparent 3px),
+    radial-gradient(circle at 52% 52%, rgba(47,76,102,.12) 0 1.2px, transparent 3px),
+    radial-gradient(circle at 74% 72%, rgba(47,76,102,.16) 0 1.6px, transparent 3px);
+}
+
+.statusbar{
+  position:absolute;
+  top:10px;
+  left:12px;
+  right:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.sb-left{ height:16px; }
+.sb-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.sb-text{
+  font-size:12px;
+  font-weight:900;
+  color: rgba(47,76,102,.82);
+  background: #f4d7dd;            /* SOLID */
+  padding:5px 10px;
+  border-radius:999px;
+  border: 1px solid var(--surfaceLine);
+  white-space:nowrap;
+}
+
+.signal{
+  display:flex;
+  align-items:flex-end;
+  gap:2px;
+  height:16px;
+}
+.signal span{
+  width:3px;
+  background: rgba(47,76,102,.78);
+  border-radius:2px;
+}
+.signal .b1{ height:5px; opacity:.55; }
+.signal .b2{ height:8px; opacity:.65; }
+.signal .b3{ height:11px; opacity:.78; }
+.signal .b4{ height:14px; opacity:.9; }
+
+.battery{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+.battery-body{
+  width:26px;
+  height:12px;
+  border:2px solid rgba(47,76,102,.78);
+  border-radius:4px;
+  padding:2px;
+  background: rgba(255,255,255,.18);
+}
+.battery-fill{
+  width:70%;
+  height:100%;
+  border-radius:2px;
+  background: rgba(47,76,102,.70);
+}
+.battery-cap{
+  width:3px;
+  height:8px;
+  border-radius:2px;
+  background: rgba(47,76,102,.78);
+}
+
+/* Lockscreen clock */
+.home-header{
+  position:relative;
+  padding:44px 18px 10px;
+  text-align:center;
+}
+.home-time{
+  font-weight:900;
+  letter-spacing:.5px;
+  font-size: clamp(42px, 7vw, 56px);
+  line-height: 1.02;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+.home-date{
+  margin-top:8px;
+  font-weight:800;
+  font-size: clamp(12px, 2.8vw, 14px);
+  color: var(--inkSoft);
+}
+
+/* decorative icons */
+.icon-grid{
+  position:relative;
+  padding: 10px 18px 120px;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.icon-item{ text-align:center; user-select:none; }
+.icon-glyph{
+  width:52px;
+  height:52px;
+  margin:0 auto 6px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background: #f3dbe0;            /* SOLID */
+  border: 2px solid var(--surfaceLine);
+  font-size:22px;
+  color: var(--ink);
+}
+.icon-name{
+  font-size:11px;
+  font-weight:900;
+  color: rgba(47,76,102,.75);
+}
+
+/* Dock (3 app utama) */
+.dock{
+  position:absolute;
+  left:0; right:0; bottom:18px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  padding:0 14px;
+}
+.app-icon{
+  width:30%;
+  max-width:130px;
+
+  /* SOLID */
+  background: var(--surface);
+  border: 2px solid var(--surfaceLine);
+
+  border-radius: 18px;
+  padding:12px 10px;
+  cursor:pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.app-icon:active{ transform: scale(.98); }
+.icon-badge{
+  width:54px; height:54px;
+  border-radius:16px;
+
+  /* SOLID */
+  background: var(--surfaceBlue);
+  border: 2px solid rgba(255,255,255,.65);
+
+  display:grid; place-items:center;
+  margin:0 auto 8px;
+  font-size:26px;
+}
+.icon-label{
+  font-size:12px;
+  font-weight:900;
+  text-align:center;
+  color: rgba(47,76,102,.82);
+}
+
+/* =========================
+   Unified SOLID surfaces
+   (Messages/Gallery/Notes)
+========================= */
+.topbar{
+  height:54px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 12px;
+
+  /* SOLID */
+  background: #f3dbe0;
+  border-bottom: 2px solid var(--surfaceLine);
+}
+.back{
+  width:38px;height:38px;
+  border:none;
+  border-radius:12px;
+
+  /* SOLID */
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine);
+
+  cursor:pointer;
+  font-size:18px;
+  color: rgba(47,76,102,.9);
+  font-weight:900;
+}
+.title{
+  font-weight:900;
+  color: rgba(47,76,102,.9);
+}
+.spacer{ flex:1; }
+
+/* screen-specific subtle backgrounds so less empty */
+#messages{
+  background:
+    radial-gradient(160px 120px at 12% 22%, rgba(255,255,255,.30), transparent 65%),
+    radial-gradient(180px 140px at 82% 40%, rgba(255,255,255,.25), transparent 70%),
+    linear-gradient(180deg, #f8dfe1 0%, #f7dadd 100%);
+}
+#gallery{
+  background:
+    repeating-linear-gradient(45deg, rgba(255,255,255,.18) 0 10px, transparent 10px 22px),
+    linear-gradient(180deg, #f8dfe1 0%, #f7dadd 100%);
+}
+#notes{
+  background:
+    radial-gradient(circle at 18% 30%, rgba(255,255,255,.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 70% 55%, rgba(255,255,255,.18) 0 2px, transparent 3px),
+    linear-gradient(180deg, #f8dfe1 0%, #f7dadd 100%);
+}
+
+/* CHAT */
+.chat{
+  height: calc(100% - 54px);
+  overflow:auto;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.bubble{
+  max-width: 85%;
+  padding:12px 12px 10px;
+  border-radius:18px;
+  border: 2px solid rgba(255,255,255,.55);
+  color: rgba(47,76,102,.92);
+}
+.bubble.left{
+  background: var(--bubbleA);
+  align-self:flex-start;
+}
+.bubble.right{
+  background: var(--bubbleB);
+  align-self:flex-end;
+}
+.meta{
+  font-size:12px;
+  font-weight:900;
+  opacity:.85;
+  margin-bottom:6px;
+}
+.text{
+  font-size:14px;
+  font-weight:800;
+  line-height:1.35;
+  margin-bottom:8px;
+}
+.play{
+  width:100%;
+  border:none;
+  border-radius: 12px;
+  padding:10px 10px;
+  cursor:pointer;
+
+  /* SOLID */
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine);
+
+  font-weight:900;
+  color: rgba(47,76,102,.92);
+}
+.hint{
+  position:absolute;
+  left:0; right:0; bottom:0;
+  padding:10px 14px;
+  font-size:12px;
+  font-weight:800;
+  color: rgba(47,76,102,.75);
+
+  /* SOLID (bukan gradient transparan) */
+  background: #f3dbe0;
+  border-top: 2px solid var(--surfaceLine);
+}
+
+/* GALLERY GRID */
+.gallery{
+  padding:14px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:10px;
+}
+.gallery img{
+  width:100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,.65);
+  background: rgba(255,255,255,.25);
+  cursor:pointer;
+}
+
+/* MODAL gallery (enlarge): atas-bawah + scrollable */
+.modal{
+  position:absolute;
+  inset:0;
+  display:none;
+  background: rgba(0,0,0,.35);
+  padding:14px;
+}
+.modal.open{ display:block; }
+
+.modal-card{
+  height:100%;
+  border-radius: 18px;
+  overflow:hidden;
+  position:relative;
+
+  /* SOLID */
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine);
+
+  /* allow scroll inside */
+  display:flex;
+  flex-direction:column;
+}
+
+.modal-close{
+  position:absolute;
+  top:10px; right:10px;
+  width:38px; height:38px;
+  border:none;
+  border-radius:12px;
+
+  /* SOLID */
+  background: #f3dbe0;
+  border: 2px solid var(--surfaceLine);
+
+  cursor:pointer;
+  z-index:2;
+  font-weight:900;
+  color: rgba(47,76,102,.9);
+}
+
+/* switch from left-right to top-bottom */
+.modal-body{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  overflow:auto; /* scrollable when desc long */
+  padding-top: 44px; /* space for close btn */
+}
+
+.modal-body img{
+  width:100%;
+  height: auto;
+  max-height: 56%;
+  object-fit: contain;
+  background: #f3dbe0;            /* SOLID */
+  border-bottom: 2px solid var(--surfaceLine);
+}
+
+/* description block */
+.modal-note{
+  padding:14px;
+}
+.modal-note h3{
+  margin:0 0 8px;
+  font-size: clamp(14px, 3.2vw, 16px);
+  font-weight:900;
+  color: rgba(47,76,102,.92);
+}
+.modal-note p{
+  margin:0;
+  font-size: clamp(12px, 2.6vw, 13px);
+  line-height:1.5;
+  font-weight:800;
+  color: rgba(47,76,102,.78);
+}
+
+/* NOTES */
+.notes{ padding:14px; }
+.note{
+  border-radius: 18px;
+  padding:14px;
+
+  /* SOLID */
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine);
+}
+.note-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:baseline;
+  margin-bottom:10px;
+}
+.note-title{
+  font-weight:1000;
+  font-size:16px;
+  color: rgba(47,76,102,.92);
+}
+.note-date{
+  opacity:.75;
+  font-size:12px;
+  font-weight:900;
+  color: rgba(47,76,102,.75);
+}
+.note-content{
+  white-space: pre-wrap;
+  line-height:1.65;
+  font-size:14px;
+  font-weight:800;
+  color: rgba(47,76,102,.82);
+}
+
+/* ===== PATCH: sizing biar pas di Android device preview ===== */
+.app{
+  padding: 10px; /* biar lebih ngepas di viewport device */
+}
+
+.phone{
+  /* sebelumnya width yang ngatur -> kadang keliatan kecil saat zoom/device preview.
+     sekarang height yang ngatur -> lebih natural di Android (20:9) */
+  height: min(92svh, 920px);
+  width: auto;
+  max-width: 96vw;
+  aspect-ratio: 9 / 20;
+}
+
+/* ===== PATCH: statusbar text kiri seperti provider (tanpa border/pill) ===== */
+.statusbar{
+  top: 12px;
+  left: 14px;
+  right: 14px;
+}
+
+.sb-left{
+  display:flex;
+  align-items:center;
+  min-width: 0;
+}
+
+.sb-text{
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(47,76,102,.75);
+  letter-spacing: .2px;
+
+  /* biar beneran kerasa "carrier" */
+  text-transform: none;
+}
+
+/* ===== PATCH: dock icons tanpa glass/tile belakang ===== */
+.dock{
+  gap: 18px;
+}
+
+.app-icon{
+  background: transparent !important;
+  border: none !important;
+  padding: 6px 4px !important;
+  border-radius: 0 !important;
+}
+
+.icon-badge{
+  /* tetap bubbly tapi floating, bukan "tile" */
+  background: var(--surfaceBlue, #b7d5ec) !important;
+  border: 2px solid rgba(255,255,255,.7) !important;
+  box-shadow: 0 10px 18px rgba(47,76,102,.12);
+}
+
+.icon-label{
+  margin-top: 6px;
+}
+
+/* optional: rapihin posisi konten home biar lebih "center" secara visual */
+.home-header{
+  padding-top: 52px !important; /* karena statusbar teks pindah kiri */
+}
+
+/* ===== Messages: hint di tengah ===== */
+.hint.hint-center{
+  text-align:center;
+  left: 14px;
+  right: 14px;
+  bottom: 10px;
+  border-radius: 14px;
+}
+
+/* ===== Message appear animation ===== */
+.bubble.appear{
+  animation: popIn 320ms ease-out both;
+}
+@keyframes popIn{
+  from{ transform: translateY(8px); opacity:0; }
+  to{ transform: translateY(0); opacity:1; }
+}
+
+/* ===== Audio player in bubble ===== */
+.audio-player{
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 14px;
+
+  background: #f6e6ea;            /* solid, satu tema */
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+}
+
+.audio-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.audio-btn{
+  flex: 0 0 auto;
+  width:44px;
+  height:44px;
+  border-radius: 14px;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  background: #f3dbe0;
+  color: rgba(47,76,102,.9);
+  font-weight: 900;
+  cursor:pointer;
+}
+
+.audio-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(47,76,102,.78);
+}
+
+.audio-meta .time{
+  font-variant-numeric: tabular-nums;
+}
+
+/* ===== "Soundwave" seekbar (range) =====
+   Ini wave stylized (bukan waveform asli), tapi draggable dan progressnya real.
+*/
+.wave{
+  -webkit-appearance:none;
+  appearance:none;
+  width:100%;
+  height: 42px;
+  border-radius: 14px;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  background:
+    /* progress overlay */
+    linear-gradient(90deg,
+      rgba(47,76,102,.30) 0%,
+      rgba(47,76,102,.30) var(--p, 0%),
+      rgba(47,76,102,.08) var(--p, 0%),
+      rgba(47,76,102,.08) 100%),
+    /* fake bars */
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,.0) 0 6px,
+      rgba(255,255,255,.0) 6px 8px),
+    repeating-linear-gradient(90deg,
+      rgba(47,76,102,.22) 0 2px,
+      transparent 2px 6px);
+  box-shadow: inset 0 0 0 6px rgba(255,255,255,.25);
+  cursor:pointer;
+  outline:none;
+}
+
+/* thumb */
+.wave::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  appearance:none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(47,76,102,.75);
+  border: 3px solid rgba(255,255,255,.85);
+  box-shadow: 0 6px 14px rgba(47,76,102,.18);
+  margin-top: 0;
+}
+.wave::-moz-range-thumb{
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(47,76,102,.75);
+  border: 3px solid rgba(255,255,255,.85);
+  box-shadow: 0 6px 14px rgba(47,76,102,.18);
+}
+
+/* Start-at input kecil */
+.startat{
+  width: 74px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  background: #fff;
+  font-family: inherit;
+  font-weight: 900;
+  color: rgba(47,76,102,.85);
+}
+.startat-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 900;
+  color: rgba(47,76,102,.72);
+}
+/* Notes list UI */
+.notes-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.note-card{
+  width:100%;
+  text-align:left;
+  padding:12px;
+  border-radius:18px;
+  background:#f6e6ea;
+  border:2px solid var(--surfaceLine, #e7c7cf);
+  cursor:pointer;
+  font-family: inherit;
+}
+
+.note-card-title{
+  font-weight:1000;
+  color: rgba(47,76,102,.92);
+  margin-bottom:4px;
+}
+
+.note-card-date{
+  font-weight:900;
+  font-size:12px;
+  color: rgba(47,76,102,.70);
+  margin-bottom:8px;
+}
+
+.note-card-preview{
+  font-weight:800;
+  font-size:13px;
+  color: rgba(47,76,102,.78);
+  line-height:1.45;
+}
+
+.note-inner-back{
+  border:none;
+  background: transparent;
+  font-weight:1000;
+  color: rgba(47,76,102,.85);
+  cursor:pointer;
+  padding: 6px 4px;
+  margin-bottom: 8px;
+}
+
+/* ===== Widgets area ===== */
+.widgets{
+  position: relative;
+  padding: 6px 18px 6px;
+  display: grid;
+  gap: 12px;
+}
+
+/* Search widget (visual only) */
+.widget{
+  border-radius: 18px;
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+}
+
+.widget-search{
+  padding: 10px;
+}
+.search-pill{
+  height: 40px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 0 14px;
+}
+.search-icon{ opacity: .75; }
+.search-text{
+  font-weight: 900;
+  color: rgba(47,76,102,.55);
+  font-size: 13px;
+}
+
+/* Calendar widget */
+.widget-calendar{
+  padding: 12px;
+}
+.cal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom: 8px;
+}
+.cal-month{
+  font-weight: 1000;
+  color: rgba(47,76,102,.92);
+  font-size: 14px;
+}
+.cal-today{
+  font-weight: 900;
+  color: rgba(47,76,102,.70);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.cal-weekdays{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.cal-weekdays span{
+  text-align:center;
+  font-size: 11px;
+  font-weight: 1000;
+  color: rgba(47,76,102,.55);
+}
+
+.cal-grid{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.cal-cell{
+  height: 28px;
+  border-radius: 10px;
+  display:grid;
+  place-items:center;
+  font-size: 12px;
+  font-weight: 1000;
+  color: rgba(47,76,102,.78);
+  background: rgba(255,255,255,.55);
+  border: 1px solid rgba(231,199,207,.9);
+}
+.cal-cell.muted{
+  opacity: .35;
+}
+.cal-cell.today{
+  background: var(--surfaceBlue, #b7d5ec);
+  border: 2px solid rgba(255,255,255,.75);
+  color: rgba(47,76,102,.92);
+}
+
+/* ===== Make room: reduce icon-grid padding-top a bit ===== */
+.icon-grid{
+  padding-top: 6px !important;
+}
+
+/* ===== Unread badge on Messages icon ===== */
+.icon-badge{
+  position: relative;
+}
+.badge{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #ff5a7a;
+  color: white;
+  font-weight: 1000;
+  font-size: 12px;
+  display:grid;
+  place-items:center;
+  border: 2px solid rgba(255,255,255,.8);
+}
+
+/* ===== In-app notification toast ===== */
+.toast{
+  position:absolute;
+  top: 44px; /* below status bar */
+  left: 14px;
+  right: 14px;
+
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  border-radius: 18px;
+  padding: 12px 14px;
+
+  box-shadow: 0 14px 26px rgba(47,76,102,.18);
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast.show{
+  animation: toastInOut 2.6s ease-in-out both;
+}
+
+.toast-title{
+  font-weight: 1000;
+  color: rgba(47,76,102,.92);
+  font-size: 14px;
+}
+.toast-sub{
+  margin-top: 2px;
+  font-weight: 900;
+  color: rgba(47,76,102,.68);
+  font-size: 12px;
+}
+
+@keyframes toastInOut{
+  0%   { opacity:0; transform: translateY(-10px); }
+  12%  { opacity:1; transform: translateY(0); }
+  80%  { opacity:1; transform: translateY(0); }
+  100% { opacity:0; transform: translateY(-10px); }
+}
+
+/* ===== Launcher grid menyatu (widgets + icons) ===== */
+.launcher-grid{
+  position: relative;
+  padding: 6px 18px 140px; /* penting: kasih ruang buat dock */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 86px;          /* tinggi “1 slot icon” */
+  gap: 14px;
+  grid-auto-flow: dense;         /* biar item ngisi di sekitarnya */
+}
+
+/* general tile wrapper */
+.tile{
+  border-radius: 18px;
+}
+
+/* span helpers */
+.span-4{ grid-column: span 4; }
+.span-2{ grid-column: span 2; }
+.row-2{ grid-row: span 2; }
+
+/* ===== Widget Search (1 row tinggi) ===== */
+.widget-search{
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  padding: 10px;
+  display:flex;
+  align-items:center;
+}
+.search-pill{
+  width: 100%;
+  height: 40px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding: 0 14px;
+}
+.search-text{
+  font-weight: 900;
+  color: rgba(47,76,102,.55);
+  font-size: 13px;
+}
+
+/* ===== Widget Calendar (mini 2x2 icon size) ===== */
+.widget-calendar{
+  background: #f6e6ea;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  padding: 10px;
+  overflow: hidden;
+}
+
+.cal-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:8px;
+  margin-bottom: 6px;
+}
+.cal-month{
+  font-weight: 1000;
+  font-size: 12px; /* diperkecil */
+  color: rgba(47,76,102,.92);
+}
+.cal-today{
+  font-weight: 900;
+  font-size: 10px; /* diperkecil */
+  color: rgba(47,76,102,.70);
+  white-space: nowrap;
+}
+
+.cal-weekdays{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.cal-weekdays span{
+  text-align:center;
+  font-size: 9px;   /* diperkecil */
+  font-weight: 1000;
+  color: rgba(47,76,102,.55);
+}
+
+.cal-grid{
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.cal-cell{
+  height: 18px;      /* mini */
+  border-radius: 7px;
+  display:grid;
+  place-items:center;
+  font-size: 9.5px;  /* mini */
+  font-weight: 1000;
+  color: rgba(47,76,102,.78);
+  background: rgba(255,255,255,.60);
+  border: 1px solid rgba(231,199,207,.95);
+}
+.cal-cell.muted{ opacity:.30; }
+.cal-cell.today{
+  background: var(--surfaceBlue, #b7d5ec);
+  border: 2px solid rgba(255,255,255,.75);
+  color: rgba(47,76,102,.92);
+}
+
+/* ===== Icon item tetap seperti sebelumnya ===== */
+.icon-item{
+  text-align:center;
+  user-select:none;
+}
+.icon-glyph{
+  width:52px;
+  height:52px;
+  margin:0 auto 6px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background: #f3dbe0;
+  border: 2px solid var(--surfaceLine, #e7c7cf);
+  font-size:22px;
+  color: var(--ink);
+}
+.icon-name{
+  font-size:11px;
+  font-weight:900;
+  color: rgba(47,76,102,.75);
+}
+
+/* ===== Dock: pastikan ga “hilang” ketimpa layer ===== */
+.dock{
+  z-index: 10;
+}
+
+/* Meta row jadi ada avatar + nama */
+.meta{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+/* Avatar inisial */
+.avatar{
+  width:22px;
+  height:22px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  font-weight:1000;
+  font-size:11px;
+  color: rgba(47,76,102,.88);
+  border: 2px solid rgba(255,255,255,.65);
+  flex: 0 0 auto;
+}
+
+/* ===== Custom Scrollbar (Pastel & Rounded) ===== */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3dbe0; /* soft pink background */
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #caa695,   /* pastel brown */
+    #b89482
+  );
+  border-radius: 999px;
+  border: 2px solid #f3dbe0; /* biar keliatan soft & menyatu */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180de
+
+    /* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #caa695 #f3dbe0;
+}

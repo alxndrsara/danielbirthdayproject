@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For You</title>
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<!-- pwa -->  
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#f3dbe0">
+
+
+	
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="app">
+    <div class="phone">
+      <div class="phone-top">
+        <div class="pill"></div>
+        <div class="mini-icons">
+          <span class="dot"></span>
+          <span class="heart">♥</span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <!-- HOME -->
+      <section id="home" class="screen active" aria-label="Home screen">
+        <div class="wallpaper">
+          <div class="cloud c1"></div>
+          <div class="cloud c2"></div>
+          <div class="cloud c3"></div>
+        </div>
+
+        <!-- Fake Android status bar -->
+        <div class="statusbar" aria-hidden="true">
+  <div class="sb-left">
+    <div class="sb-text">Happy birthday!</div>
+  </div>
+
+  <div class="sb-right">
+    <div class="signal" title="signal">
+      <span class="b1"></span><span class="b2"></span><span class="b3"></span><span class="b4"></span>
+    </div>
+
+    <div class="battery" title="battery">
+      <div class="battery-body">
+        <div class="battery-fill"></div>
+      </div>
+      <div class="battery-cap"></div>
+    </div>
+  </div>
+</div>
+
+        <!-- Lockscreen-like clock -->
+        <div class="home-header">
+          <div class="home-time" id="homeTime">00:00</div>
+          <div class="home-date" id="homeDate">Senin, 1 Januari</div>
+        </div>
+		
+		<!-- Widgets -->
+<div class="widgets">
+  <div class="widget widget-search" aria-hidden="true">
+    <div class="search-pill">
+      <span class="search-icon">🔎</span>
+      <span class="search-text">Search</span>
+    </div>
+  </div>
+
+  <div class="widget widget-calendar" aria-hidden="true">
+    <div class="cal-head">
+      <div class="cal-month" id="calMonth">Desember 2025</div>
+      <div class="cal-today" id="calTodayText">Selasa, 16</div>
+    </div>
+    <div class="cal-weekdays">
+      <span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span><span>Min</span>
+    </div>
+    <div class="cal-grid" id="calGrid"></div>
+  </div>
+</div>
+
+<!-- In-app notification popup (toast) -->
+<div class="toast" id="toast" aria-hidden="true">
+  <div class="toast-title">Kamu memiliki pesan baru!</div>
+  <div class="toast-sub">Tap Messages untuk membukanya.</div>
+</div>
+
+        <!-- Decorative app icons (tanpa white glass overlay di belakang) -->
+        <div class="icon-grid" aria-hidden="true">
+          <div class="icon-item">
+            <div class="icon-glyph">📞</div><div class="icon-name">Phone</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon-glyph">🌐</div><div class="icon-name">Browser</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon-glyph">📷</div><div class="icon-name">Camera</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon-glyph">⚙️</div><div class="icon-name">Settings</div>
+          </div>
+
+          <div class="icon-item">
+            <div class="icon-glyph">🕒</div><div class="icon-name">Clock</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon-glyph">📅</div><div class="icon-name">Calendar</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon-glyph">🎵</div><div class="icon-name">Music</div>
+          </div>
+          <div class="icon-item">
+            <div class="icon-glyph">🧾</div><div class="icon-name">Files</div>
+          </div>
+        </div>
+
+        <!-- Dock (3 app utama) -->
+        <div class="dock">
+          <button class="app-icon" type="button" data-open="messages" aria-label="Messages">
+            <div class="icon-badge">💬</div>
+            <div class="icon-label">Messages</div>
+          </button>
+
+          <button class="app-icon" type="button" data-open="gallery" aria-label="Gallery">
+            <div class="icon-badge">🖼️</div>
+            <div class="icon-label">Gallery</div>
+          </button>
+
+          <button class="app-icon" type="button" data-open="notes" aria-label="Notes">
+            <div class="icon-badge">🗒️</div>
+            <div class="icon-label">Notes</div>
+          </button>
+        </div>
+      </section>
+
+      <!-- MESSAGES -->
+      <section id="messages" class="screen" aria-label="Messages">
+        <header class="topbar">
+          <button class="back" type="button" data-back>←</button>
+          <div class="title">Messages</div>
+          <div class="spacer"></div>
+        </header>
+
+        <div class="chat" id="chat"></div>
+
+        <footer class="hint hint-center" id="messagesHint">
+          Tap tombol play untuk dengerin voice note.
+        </footer>
+      </section>
+
+      <!-- GALLERY -->
+      <section id="gallery" class="screen" aria-label="Gallery">
+        <header class="topbar">
+          <button class="back" type="button" data-back>←</button>
+          <div class="title">Gallery</div>
+          <div class="spacer"></div>
+        </header>
+
+        <div class="gallery" id="galleryGrid"></div>
+
+        <div class="modal" id="galleryModal" aria-hidden="true">
+          <div class="modal-card" role="dialog" aria-modal="true">
+            <button class="modal-close" type="button" id="modalClose">✕</button>
+            <div class="modal-body">
+              <img id="modalImg" alt="Enlarged photo" />
+              <div class="modal-note">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTES -->
+      <section id="notes" class="screen" aria-label="Notes">
+        <header class="topbar">
+          <button class="back" type="button" data-back>←</button>
+          <div class="title">Notes</div>
+          <div class="spacer"></div>
+        </header>
+
+        <div class="notes">
+          <div class="note note-app">
+            <div class="note-top">
+              <div class="note-title">Letter for you</div>
+              <div class="note-date" id="noteDate"></div>
+            </div>
+            <div class="note-content" id="noteContent"></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="phone-bottom">
+        <div class="home-indicator"></div>
+      </div>
+    </div>
+  </div>
+
+  <audio id="player"></audio>
+  <script src="app.js"></script>
+  
+  <!--service worker -->
+  <!-- <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js");
+  }
+</script> -->
+
+</body>
+</html>
