@@ -77,7 +77,7 @@ aku bangga.
 sisanya nanti aja, males ngetik,
 kamu juga males baca kan.
 `
-    },  
+    }  
   ];
 
   /* =========================
@@ -725,5 +725,6 @@ function colorFromName(name){
 }
 
 });
+
 
 
