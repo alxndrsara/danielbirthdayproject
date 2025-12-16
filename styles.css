@@ -355,6 +355,7 @@ body{
   display:flex;
   flex-direction:column;
   gap:12px;
+  padding-bottom: 80px;
 }
 
 .bubble{
@@ -1202,3 +1203,4 @@ body{
     padding-bottom: calc(150px + env(safe-area-inset-bottom)) !important;
   }
 }
+
