@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
      DATA
   ========================== */
 
-  // 1) MESSAGES: urutan tetap sesuai array ini
-  // text 1 kalimat, audio mp3/m4a
+  // 1) MESSAGES: 
+  
   const MESSAGES = [
     { side: "left",  name: "Oriana", text: "Happy birthday Danil!", audio: "audio/1-oriana.mp3" },
     { side: "left",  name: "Viarosita", text: "WOYYYY NILLL",     audio: "audio/2-via.mp3" },
@@ -21,19 +21,36 @@ document.addEventListener("DOMContentLoaded", () => {
 	{ side: "right", name: "Sara",     text: "....ya intinya dia bilang selamat ulang tahun WKWKWK" },
 	{ side: "right", name: "Sara",     text: "masih ada lagiii wait" },
 	{ side: "left",  name: "Septi", text: "buat bonji aka bonge aka danil",     audio: "audio/9-septi.mp3" },
+	{ side: "left",  name: "Sisil", text: "Happy birthday to youuu",     audio: "audio/12-sisil.mp3" },  
 	{ side: "left",  name: "Kezia", text: "I don't say happy birthday, but I pray for you",     audio: "audio/10-kezia.mp3" },
 	{ side: "right", name: "Sara",     text: "Kamu disayang nil, ga cuma sama aku aja, tapi orang orang disekitar kamu juga :D" },
 	{ side: "left",  name: "Paksi", text: "Halo assalamualaikum WKWKWKWK",     audio: "audio/11-paksi.mp3" },  
-    // ... sampai 17 nanti
+	
+    
   ];
 
   // 2) GALLERY
   const GALLERY = [
-    { src: "images/image1.jpg", title: "Momen 1", desc: "Tulis deskripsi foto di sini." },
-    { src: "assets/images/foto2.jpg", title: "Momen 2", desc: "Tulis deskripsi foto di sini." },
-    { src: "assets/images/foto3.jpg", title: "Momen 3", desc: "Tulis deskripsi foto di sini." },
-  ];
+    { src: "images/1.jpeg", title: "2025 quick recap!", desc: "bub baru nyobain kerajinan tanah liat bikin cinnamoroll biru dongker" },
+    { src: "images/2.jpeg", title: "kamu dan hobi kamu jalan jalan", desc: "bub baru pertama kali naik whoosh" },
+	{ src: "images/4.jpeg", title: "superpark mahal tapi you live for the moment", desc: "bub baru pertama kali cobain main superpark" },
+	{ src: "images/5.jpeg", title: "one of my favorite pictures of you", desc: "bub, pertama kali pake sweaterku" },
+	{ src: "images/6.jpeg", title: "you and your love for swimming", desc: "atlantis, pilihan favorit kamu buat berenang" },
+	{ src: "images/7.jpeg", title: "also one of my fav pic of you", desc: "kamu udah 100 juta kali kondangan tahun ini" },
+	{ src: "images/8.jpeg", title: "perih guys", desc: "di tahun ini juga, kamu kebeset benang layangan pas bawa motor" },
+	{ src: "images/10.jpeg", title: "bandung, lagi", desc: "pertama kali juga bub cobain makanan viral yang manisnya bikin kaki buntung" },
+	{ src: "images/12.jpeg", title: ":P", desc: "dimintain fotoin aku malah fotoin diri sendiri yaudah aku masukin sini aja mampus" },
+	{ src: "images/13.jpeg", title: "danil waktu lagi suka sukanya makanan cina", desc: "lucukkk, pertama kali kamu cobain makanan baru di PIK dan enak!" },
+	{ src: "images/15.jpeg", title: "kasian mukanya merah nunggu kereta", desc: "pertama kali kita lari di gbk sama via deshi, pulangnya harus naik transum lagi" },
+	{ src: "images/16.jpeg", title: "touring break", desc: "tahun ini, kamu pernah makan es selendang mayang di sentul depan danau" },
+	{ src: "images/17.jpeg", title: "nugas di suryakencana", desc: "nugas aja tetep harus jalan jalan kalau kamu tuh" },
+	{ src: "images/18.jpeg", title: "minta difotoin", desc: "udah beberapa kali ke wahoo, baru di tahun ini naik buggy carnya, ngeng" },
+	{ src: "images/19.jpeg", title: "minta difotoin tuku date katanya", desc: "tahun ini udah berapa cup kopi yang udah kamu minum coba?" },
+	{ src: "images/20.jpeg", title: "menekan budget", desc: "lagi gaada uang, nugasnya di bean bag pakuwon aja" },
+	{ src: "images/21.jpeg", title: "bub dan momo mimi palsu", desc: "kalau ada pameran binatang, pasti liatnya sugar glider, bandingin harga sama yang dirumah doang, diurus kaga" },
+	{ src: "images/25.jpeg", title: "foto terakhir untuk menutup galeri ini", desc: "mengawali bulan bubub dengan natalan di gbk" },
 
+];
   // 3) NOTES
   const NOTES = [
     {
@@ -725,6 +742,5 @@ function colorFromName(name){
 }
 
 });
-
 
 
