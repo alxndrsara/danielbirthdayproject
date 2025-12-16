@@ -1142,3 +1142,63 @@ body{
   scrollbar-width: thin;
   scrollbar-color: #caa695 #f3dbe0;
 }
+
+/* ===== FIX: Home layout biar dock tidak nabrak icon ===== */
+#home{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* biar scroll hanya di grid, bukan seluruh screen */
+}
+
+/* header jangan kebesaran di HP */
+.home-header{
+  flex: 0 0 auto;
+  padding-bottom: 6px !important;
+}
+
+/* launcher-grid jadi area scroll */
+.launcher-grid{
+  flex: 1 1 auto;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* ruang aman buat dock + safe area */
+  padding-bottom: calc(170px + env(safe-area-inset-bottom)) !important;
+}
+
+/* dock selalu di atas konten, dan geser sesuai safe area */
+.dock{
+  bottom: calc(18px + env(safe-area-inset-bottom)) !important;
+  z-index: 20 !important;
+}
+
+/* Toast jangan ikut ngedorong layout */
+.toast{
+  z-index: 25;
+}
+
+/* ===== Responsif: kalau layar HP pendek, kecilin slot icon ===== */
+@media (max-height: 780px){
+  .launcher-grid{
+    grid-auto-rows: 76px !important;
+    gap: 12px !important;
+    padding-bottom: calc(160px + env(safe-area-inset-bottom)) !important;
+  }
+  .icon-glyph{
+    width:48px !important;
+    height:48px !important;
+    border-radius:16px !important;
+    font-size:20px !important;
+  }
+  .icon-name{
+    font-size:10px !important;
+  }
+}
+
+/* ===== Extra kecil (kalau viewport makin sempit) ===== */
+@media (max-height: 700px){
+  .launcher-grid{
+    grid-auto-rows: 70px !important;
+    padding-bottom: calc(150px + env(safe-area-inset-bottom)) !important;
+  }
+}
