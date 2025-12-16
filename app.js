@@ -21,7 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	{ side: "right", name: "Sara",     text: "....ya intinya dia bilang selamat ulang tahun WKWKWK" },
 	{ side: "right", name: "Sara",     text: "masih ada lagiii wait" },
 	{ side: "left",  name: "Septi", text: "buat bonji aka bonge aka danil",     audio: "audio/9-septi.mp3" },
-	{ side: "left",  name: "Kezia", text: "I don't say happy birthday, but I pray for you",     audio: "audio/10-kezia.mp3" },  
+	{ side: "left",  name: "Kezia", text: "I don't say happy birthday, but I pray for you",     audio: "audio/10-kezia.mp3" },
+	{ side: "right", name: "Sara",     text: "Kamu disayang nil, ga cuma sama aku aja, tapi orang orang disekitar kamu juga :D" },
+	{ side: "left",  name: "Paksi", text: "Halo assalamualaikum WKWKWKWK",     audio: "audio/11-paksi.mp3" },  
     // ... sampai 17 nanti
   ];
 
@@ -713,3 +715,4 @@ function colorFromName(name){
 }
 
 });
+
