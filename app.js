@@ -8,17 +8,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const MESSAGES = [
     { side: "left",  name: "Oriana", text: "Happy birthday Danil!", audio: "audio/1-oriana.mp3" },
     { side: "left",  name: "Viarosita", text: "WOYYYY NILLL",     audio: "audio/2-via.mp3" },
-    { side: "right", name: "Sara",     text: "Aku kumpulin suara mereka buat kamu bubbb" },
+    { side: "right", name: "Sara",     text: "Happy birthday dari kita semuaaa<3" },
 	{ side: "left",  name: "Deshinta", text: "Selamat ulang tahun ke-25 daniel!",     audio: "audio/3-deshinta.mp3" },
 	{ side: "left",  name: "Faris", text: "Happy birthday Bang Daniel!",     audio: "audio/4-faris.mp3" },
 	{ side: "right", name: "Sara",     text: "IYA ITU FARIS AKU PAKSA WKWKWKW" },
 	{ side: "right", name: "Sara",     text: "Tunggu yaaa masih ada lagii" },
 	{ side: "left",  name: "Danilo", text: "EYYYY ada yang ulang tahun nii",     audio: "audio/5-danilo.mp3" },
-	{ side: "left",  name: "Abdiel", text: "HEPI BERTDEY BRADER",     audio: "audio/6-Abdiel.mp3" },
+	{ side: "left",  name: "Abdiel", text: "HEPI BERTDEY BRADER",     audio: "audio/6-abdiel.mp3" },
 	{ side: "right", name: "Sara",     text: "WKWKWKWKWKWKW" },
 	{ side: "left",  name: "Fitri", text: "happy birthday bang daniel!:D",     audio: "audio/7-fitri.mp3" },
 	{ side: "left",  name: "Anet", text: "BUEN CUMPLEANOS DANIEL",     audio: "audio/8-anet.mp3" },
 	{ side: "right", name: "Sara",     text: "....ya intinya dia bilang selamat ulang tahun WKWKWK" },
+	{ side: "right", name: "Sara",     text: "masih ada lagiii wait" },
+	{ side: "left",  name: "Septi", text: "buat bonji aka bonge aka danil",     audio: "audio/9-septi.mp3" },
+	{ side: "left",  name: "Kezia", text: "I don't say happy birthday, but I pray for you",     audio: "audio/10-kezia.mp3" },  
     // ... sampai 17 nanti
   ];
 
@@ -708,4 +711,5 @@ function colorFromName(name){
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return AVATAR_COLORS[h % AVATAR_COLORS.length];
 }
+
 });
