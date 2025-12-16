@@ -42,16 +42,42 @@ document.addEventListener("DOMContentLoaded", () => {
       content:
 `Hari ini kamu nambah umur.
 Jujur, aku seneng dunia ini punya kamu lebih lama.
+
+Hari ini kamu dirayain, 
+bukan karena apa yang kamu capai,
+tapi karena kamu ada.
 `
     },
     {
-      title: "Things I love about you",
+      title: "Disclaimer",
       date: "16 Desember 2025",
       content:
-`1) ...
-2) ...
-3) ...`
-    }
+`Aku sebenernya pengen beliin kamu kado,
+yang bisa kamu pegang, yang bisa kamu pamerin.
+
+Tapi duitku dah habis WKWKWKW, 
+jadi aku bikin ini,
+karena yang aku punya sekarang cuma waktu. 
+
+aku buat ini bukan karena aku jago ngoding dan kreatif (meskipun emang iya),
+tapi ini karena aku gamau hari ulang tahun kamu lewat biasa aja.
+
+Kalau aku bisa ngasih kamu satu hal, apa aja, aku pengen kamu tau kalau
+kamu penting.
+`
+    },
+	{
+      title: "1 lagi deh janji",
+      date: "16 Desember 2025",
+      content:
+`Selamat ulang tahun iyah danil.
+
+Kamu keren.
+aku bangga.
+sisanya nanti aja, males ngetik,
+kamu juga males baca kan.
+`
+    },  
   ];
 
   /* =========================
