@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
   /* =========================
-     DATA (kamu tinggal edit)
+     DATA
   ========================== */
 
   // 1) MESSAGES: urutan tetap sesuai array ini
-  // text 1 kalimat (kamu isi manual), audio mp3/m4a
+  // text 1 kalimat, audio mp3/m4a
   const MESSAGES = [
     { side: "left",  name: "Oriana", text: "Happy birthday Danil!", audio: "audio/1-oriana.mp3" },
     { side: "left",  name: "Viarosita", text: "WOYYYY NILLL",     audio: "audio/2-via.mp3" },
@@ -34,27 +34,14 @@ document.addEventListener("DOMContentLoaded", () => {
     { src: "assets/images/foto3.jpg", title: "Momen 3", desc: "Tulis deskripsi foto di sini." },
   ];
 
-  // 3) NOTES: bisa banyak
+  // 3) NOTES
   const NOTES = [
     {
-      title: "Letter for you",
-      date: "16 Desember 2025",
+      title: "Hari ini",
+      date: "24 Desember 2025",
       content:
-`Aku tau kamu orangnya males baca.
-Jadi aku singkat aja bub 
-
-Aku bangga sama kamu.
-Bukan karena apa yang kamu capai,
-tapi karena cara kamu jalanin hari-hari kamu.
-
-Kalau suatu hari kamu capek,
-nggak tau mau ngomong apa,
-atau cuma pengen diem —
-
-aku di sini.
-Tanpa nanya, tanpa maksa.
-
-Selamat ulang tahun.
+`Hari ini kamu nambah umur.
+Jujur, aku seneng dunia ini punya kamu lebih lama.
 `
     },
     {
@@ -73,8 +60,8 @@ Selamat ulang tahun.
   const screens = ["home", "messages", "gallery", "notes"];
   const screenEls = new Map(screens.map(id => [id, document.getElementById(id)]));
 
-  let messagesAnimatedOnce = false;   // supaya animasi cuma sekali per sesi
-  let messagesAnimToken = 0;          // cancel token kalau user pindah screen saat animasi
+  let messagesAnimatedOnce = false;   // sanimasi cuma sekali per sesi
+  let messagesAnimToken = 0;          // cancel token 
 
   function openScreen(id){
     screens.forEach(s => {
@@ -93,7 +80,7 @@ Selamat ulang tahun.
     }
 
     if (id === "gallery") {
-      renderGallery(); // aman dipanggil berulang
+      renderGallery(); // dipanggil berulang
     }
 
     if (id === "notes") {
@@ -286,7 +273,7 @@ function ensureAudio(){
   return audioCtx;
 }
 
-// Ding untuk chat masuk (lebih “tinggi” & pendek)
+// Ding untuk chat masuk (lebih tinggi & pendek)
 function chatDing(){
   try{
     const ctx = ensureAudio();
@@ -306,7 +293,7 @@ function chatDing(){
   } catch {}
 }
 
-// Ding untuk toast notif (lebih “rendah” & sedikit lebih lama)
+// Ding untuk toast notif (lebih rendah lebih lama dikit)
 function toastDing(){
   try{
     const ctx = ensureAudio();
@@ -409,7 +396,7 @@ function toastDing(){
         setRangeProgress(c.range);
       }
 
-      // sebelum play: kalau user sudah drag seekbar di message ini, mulai dari situ
+      // sebelum play: kalau sudah drag seekbar di message ini, mulai dari situ
       const desiredStart = Number(c.range.value || 0);
       if (Number.isFinite(desiredStart) && desiredStart > 0) {
         player.currentTime = desiredStart;
@@ -587,7 +574,7 @@ function renderCalendar(date = new Date()){
 
   calGridEl.innerHTML = "";
 
-  // total cell: 42 (6 minggu) biar rapi seperti widget kalender
+  // total cell: 42 (6 minggu)
   const totalCells = 42;
   for (let i = 0; i < totalCells; i++){
     const cell = document.createElement("div");
@@ -610,10 +597,7 @@ renderCalendar();
 setInterval(() => renderCalendar(new Date()), 60 * 1000);
 
 /* =========================
-   HOME NOTIF: toast tiap 5 detik
-   - mulai setelah user pertama kali tap (biar audio bisa bunyi)
-   - hanya bunyi kalau HOME sedang active
-   - stop permanen setelah user buka Messages
+   HOME NOTIF
 ========================= */
 const toastEl = document.getElementById("toast");
 const badgeEl = document.getElementById("messagesBadge");
@@ -715,4 +699,5 @@ function colorFromName(name){
 }
 
 });
+
 
