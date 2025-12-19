@@ -5,27 +5,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 1) MESSAGES: 
   
-  const MESSAGES = [
+   const MESSAGES = [
+	{ side: "right", name: "Sara",     text: "Hari ini banyak yang mau ngomong sama kamu" },
+	{ side: "right", name: "Sara",     text: "Pelan pelan ya dengerinnya" },
     { side: "left",  name: "Oriana", text: "Happy birthday Danil!", audio: "audio/1-oriana.mp3" },
     { side: "left",  name: "Viarosita", text: "WOYYYY NILLL",     audio: "audio/2-via.mp3" },
-    { side: "right", name: "Sara",     text: "Happy birthday dari kita semuaaa<3" },
 	{ side: "left",  name: "Deshinta", text: "Selamat ulang tahun ke-25 daniel!",     audio: "audio/3-deshinta.mp3" },
 	{ side: "left",  name: "Faris", text: "Happy birthday Bang Daniel!",     audio: "audio/4-faris.mp3" },
 	{ side: "right", name: "Sara",     text: "IYA ITU FARIS AKU PAKSA WKWKWKW" },
 	{ side: "right", name: "Sara",     text: "Tunggu yaaa masih ada lagii" },
 	{ side: "left",  name: "Danilo", text: "EYYYY ada yang ulang tahun nii",     audio: "audio/5-danilo.mp3" },
-	{ side: "left",  name: "Keylie", text: "Happy birthday Danil!",     audio: "audio/13-keylie.mp3" },  
+	{ side: "left",  name: "Keylie", text: "Happy birthday Danil!",     audio: "audio/13-keylie.mp3" },
+	{ side: "left",  name: "Paksi", text: "Halo assalamualaikum WKWKWKWK",     audio: "audio/11-paksi.mp3" },  
 	{ side: "left",  name: "Abdiel", text: "HEPI BERTDEY BRADER",     audio: "audio/6-abdiel.mp3" },
-	{ side: "right", name: "Sara",     text: "WKWKWKWKWKWKW" },
+	{ side: "right", name: "Sara",   text: "WKWKWKWKWKWKW" },
 	{ side: "left",  name: "Fitri", text: "happy birthday bang daniel!:D",     audio: "audio/7-fitri.mp3" },
-	{ side: "left",  name: "Anet", text: "BUEN CUMPLEANOS DANIEL",     audio: "audio/8-anet.mp3" },
-	{ side: "right", name: "Sara",     text: "....ya intinya dia bilang selamat ulang tahun WKWKWK" },
-	{ side: "right", name: "Sara",     text: "masih ada lagiii wait" },
+	{ side: "left",  name: "Fitri", text: "shalom ka danil!",     audio: "audio/14-maria.mp3" },
 	{ side: "left",  name: "Septi", text: "buat bonji aka bonge aka danil",     audio: "audio/9-septi.mp3" },
+	{ side: "left",  name: "Anet", text: "BUEN CUMPLEANOS DANIEL",     audio: "audio/8-anet.mp3" },
+	{ side: "right", name: "Sara",    text: "....ya intinya mereka bilang selamat ulang tahun WKWKWK" },
+	{ side: "right", name: "Sara",     text: "masih ada lagiii wait" },
 	{ side: "left",  name: "Sisil", text: "Happy birthday to youuu",     audio: "audio/12-sisil.mp3" },  
 	{ side: "left",  name: "Kezia", text: "I don't say happy birthday, but I pray for you",     audio: "audio/10-kezia.mp3" },
-	{ side: "right", name: "Sara",     text: "Dirayain juga nih bub sama keluarga kamu :D" },
-	{ side: "left",  name: "Paksi", text: "Halo assalamualaikum WKWKWKWK",     audio: "audio/11-paksi.mp3" },  
+	{ side: "right", name: "Sara",     text: "iyaaa, kita semua, aku, temen temen, dan keluarga kamu semua ngerayain ulang tahun kamu :D" },
+	{ side: "right", name: "Sara",     text: "Udah ah, aku juga mau ngomong weee" },
+	{ side: "right", name: "Sara",     text: "", audio: "audio/15-sara.mp3"	},
+	
+	
+
+	
 	
     
   ];
@@ -59,11 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
       date: "24 Desember 2025",
       content:
 `Hari ini kamu nambah umur.
-Jujur, aku seneng dunia ini punya kamu lebih lama.
-
 Hari ini kamu dirayain, 
 bukan karena apa yang kamu capai,
 tapi karena kamu ada.
+
+Aku ga pinter ngerangkai kata kata cantik, 
+jadi aku ajak temen temen untuk rangkai setiap doa baik untuk kamu.
+Udah aku aminin juga selama aku ngoding, hehe. 
+Gantian kamu yang aminin yaaa. 
 `
     },
     {
@@ -76,12 +87,14 @@ yang bisa kamu pegang, yang bisa kamu pamerin.
 Tapi duitku dah habis WKWKWKW, 
 jadi aku bikin ini,
 karena yang aku punya sekarang cuma waktu. 
+Itu juga nyempet nyempetin begadang, sih. Tapi aku seneng, semoga kamu seneng juga ya.  
 
-aku buat ini bukan karena aku jago ngoding dan kreatif (meskipun emang iya),
-tapi ini karena aku gamau hari ulang tahun kamu lewat biasa aja.
+Aku juga milih buat ini bukan karena aku jago ngoding dan kreatif (meskipun emang iya),
+tapi ini karena aku gamau hari ulang tahun kamu lewat biasa aja. 
 
-Kalau aku bisa ngasih kamu satu hal, apa aja, aku pengen kamu tau kalau
-kamu penting.
+Maaf aku selalu ngerasa under pressure tiap deket ulang tahun kamu,
+bukannya aku gak suka ngerayain ulang tahun, aku suka banget malah,
+tapi aku khawatir aku ga ngerayain sesuai ekspektasi kamu.
 `
     },
 	{
@@ -89,6 +102,9 @@ kamu penting.
       date: "16 Desember 2025",
       content:
 `Selamat ulang tahun iyah danil.
+25 itu cuma angka. Masih ada 30, 35, 40, 45, sampe seterusnya.
+Tapi 25 juga cuma dateng satu kali.
+Jadi jangan lupa untuk dinikmatin.
 
 Kamu keren.
 aku bangga.
@@ -743,6 +759,7 @@ function colorFromName(name){
 }
 
 });
+
 
 
 
