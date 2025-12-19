@@ -20,15 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
 	{ side: "left",  name: "Abdiel", text: "HEPI BERTDEY BRADER",     audio: "audio/6-abdiel.mp3" },
 	{ side: "right", name: "Sara",   text: "WKWKWKWKWKWKW" },
 	{ side: "left",  name: "Fitri", text: "happy birthday bang daniel!:D",     audio: "audio/7-fitri.mp3" },
-	{ side: "left",  name: "Fitri", text: "shalom ka danil!",     audio: "audio/14-maria.mp3" },
+	{ side: "left",  name: "Maria", text: "shalom ka danil!",     audio: "audio/14-maria.mp3" },
 	{ side: "left",  name: "Septi", text: "buat bonji aka bonge aka danil",     audio: "audio/9-septi.mp3" },
 	{ side: "left",  name: "Anet", text: "BUEN CUMPLEANOS DANIEL",     audio: "audio/8-anet.mp3" },
 	{ side: "right", name: "Sara",    text: "....ya intinya mereka bilang selamat ulang tahun WKWKWK" },
 	{ side: "right", name: "Sara",     text: "masih ada lagiii wait" },
 	{ side: "left",  name: "Sisil", text: "Happy birthday to youuu",     audio: "audio/12-sisil.mp3" },  
 	{ side: "left",  name: "Kezia", text: "I don't say happy birthday, but I pray for you",     audio: "audio/10-kezia.mp3" },
-	{ side: "right", name: "Sara",     text: "iyaaa, kita semua, aku, temen temen, dan keluarga kamu semua ngerayain ulang tahun kamu :D" },
-	{ side: "right", name: "Sara",     text: "Udah ah, aku juga mau ngomong weee" },
+	{ side: "right", name: "Sara",     text: "iyaaa, kita semua, aku, temen temen, dan keluarga kamu, semua ngerayain ulang tahun kamu :D" },
+	{ side: "right", name: "Sara",     text: "Udah ah gantian, tapi aku ngomong apa ya bjir" },
 	{ side: "right", name: "Sara",     text: "", audio: "audio/15-sara.mp3"	},
 	
 	
@@ -759,6 +759,7 @@ function colorFromName(name){
 }
 
 });
+
 
 
 
