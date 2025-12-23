@@ -3,5 +3,6 @@ self.addEventListener("install", () => {
 });
 
 self.addEventListener("fetch", () => {
-  // minimal dulu, biar ringan
+
 });
+
