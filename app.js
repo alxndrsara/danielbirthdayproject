@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	{ side: "right", name: "Sara",     text: "Tunggu yaaa masih ada lagii" },
 	{ side: "left",  name: "Danilo", text: "EYYYY ada yang ulang tahun nii",     audio: "audio/5-danilo.mp3" },
 	{ side: "left",  name: "Keylie", text: "Happy birthday Danil!",     audio: "audio/13-keylie.mp3" },
+	{ side: "left",  name: "Lauren", text: "Hai daniil!",     audio: "audio/16-lauren.mp3" },
 	{ side: "left",  name: "Paksi", text: "Halo assalamualaikum WKWKWKWK",     audio: "audio/11-paksi.mp3" },  
 	{ side: "left",  name: "Abdiel", text: "HEPI BERTDEY BRADER",     audio: "audio/6-abdiel.mp3" },
 	{ side: "right", name: "Sara",   text: "WKWKWKWKWKWKW" },
@@ -759,6 +760,7 @@ function colorFromName(name){
 }
 
 });
+
 
 
 
