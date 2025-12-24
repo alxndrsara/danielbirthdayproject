@@ -1,4 +1,4 @@
-const CACHE_NAME = "for-you-v1";
+const CACHE_NAME = "for-you-v2";
 
 // cache
 const ASSETS = [
@@ -24,6 +24,7 @@ const ASSETS = [
   "./audio/13-keylie.mp3",
   "./audio/14-maria.mp3",
   "./audio/15-sara.mp3",
+  "./audio/16-lauren.mp3",
 
   // images 
   "./images/1.jpeg",
@@ -105,3 +106,4 @@ self.addEventListener("fetch", (event) => {
     })
   );
 });
+
